@@ -2,9 +2,9 @@ package puc.ia.maze
 
 object Start {
 
-    const val populationSize = 1000
+    const val populationSize = 5000
     const val numberOfIterations = 200000
-    const val mutationSize = 300
+    const val mutationSize = 1000
 
     const val freeNumber = 0
     const val startNumber = 2
@@ -42,6 +42,8 @@ object Start {
             var best = scoredPopulation.minByOrNull { it.score }!!
 
             println("${best.score}")
+
+           // scoredPopulation.sortBy { it.score }
 
             population = PopulationLoader.crossover(scoredPopulation, populationSize, best)
 

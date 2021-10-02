@@ -2,8 +2,8 @@ package puc.ia.maze
 
 object FitnessCalculator {
 
-    const val invalidIndexPoints = 40
-    const val wallsPoints = 20
+    const val invalidIndexPoints = 45
+    const val wallsPoints = 15
     const val cyclesPoints = 5
     const val hasNotFoundExitPoints = 200
 
