@@ -52,10 +52,10 @@ object Start {
 
             if (1 == mode) {
                 println("actual score: ${best.score}")
-                println("way: $solution")
+                println("chromossomes: ${best.chromossomes.joinToString(",")}")
             } else {
                 if (cont == 10) {
-                    println("way: $solution")
+                    println("chromossomes: ${best.chromossomes.joinToString(",")}")
                     println("actual score: ${best.score}")
                     cont = 0
                 }
