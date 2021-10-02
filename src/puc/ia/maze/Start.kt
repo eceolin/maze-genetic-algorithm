@@ -1,5 +1,8 @@
 package puc.ia.maze
 
+import java.util.*
+import kotlin.collections.ArrayList
+
 object Start {
 
     const val populationSize = 5000
@@ -18,6 +21,10 @@ object Start {
     @JvmStatic
     fun main(args: Array<String>) {
 
+        println("Digite o modo: 1 - lento \\ 2 - rapido")
+
+        val mode = Scanner(System.`in`).nextInt()
+
         val maze: Array<IntArray> = MazeLoader.load()
 
         val chromosomeSize = calculateChromosomeSize(maze)
@@ -28,6 +35,8 @@ object Start {
         val endPosition = searchPosition(maze, endNumber)
 
         var solution: Individual?
+
+        var cont = 0
 
         for (i in 0 until numberOfIterations) {
             val scoredPopulation = movementAgent(maze, population, startPosition, endPosition)
@@ -41,16 +50,31 @@ object Start {
 
             var best = scoredPopulation.minByOrNull { it.score }!!
 
-            println("${best.score}")
+            if (1 == mode) {
+                println("actual score: ${best.score}")
+                println("way: $solution")
+            } else {
+                if (cont == 10) {
+                    println("way: $solution")
+                    println("actual score: ${best.score}")
+                    cont = 0
+                }
+            }
 
-           // scoredPopulation.sortBy { it.score }
+            cont++
+
+            if (1 == mode) {
+                println("crossover")
+            }
 
             population = PopulationLoader.crossover(scoredPopulation, populationSize, best)
 
             population = movementAgent(maze, population, startPosition, endPosition)
 
             if (i % 2 == 0) {
-                println("mutating")
+                if (1 == mode) {
+                    println("mutating")
+                }
                 population = PopulationLoader.mutate(maze, population, mutationSize)
             }
         }
