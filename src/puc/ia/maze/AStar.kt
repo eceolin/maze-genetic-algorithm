@@ -127,7 +127,7 @@ open class AStar {
     private fun getNodeCost(originCoordinate: Pair<Int, Int>, destinyCoordinate: Pair<Int, Int>): Int {
         val distanceX: Int = abs(destinyCoordinate.first - originCoordinate.first)
         val distanceY: Int = abs(destinyCoordinate.second - originCoordinate.second)
-        return (distanceX + distanceY) * 10
+        return (distanceX + distanceY) * 15
     }
 
     private fun getCostToStart(originCoordinate: Pair<Int, Int>): Int {
