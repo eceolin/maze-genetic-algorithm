@@ -5,9 +5,9 @@ import kotlin.collections.ArrayList
 
 object Start {
 
-    const val populationSize = 5000
+    const val populationSize = 2500
     const val numberOfIterations = 200000
-    const val mutationSize = 1000
+    const val mutationSize = 500
 
     const val freeNumber = 0
     const val startNumber = 2
